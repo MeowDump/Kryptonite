@@ -1,0 +1,226 @@
+@font-face {
+  font-family: 'Mona';
+  src: url('mona.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --primary:#ff3366;
+  --on-primary:#ffffff;
+  --surface:#fff5f8;
+  --surface-variant:#ffffff;
+  --on-surface:#1c1c1c;
+  --outline:#f7a1b5;
+  --shadow:0 6px 18px rgba(255,51,102,.25);
+
+  --radius-card:20px;
+  --radius-btn:14px;
+  --radius-item:12px;
+}
+
+body.dark {
+  --primary:#C10045;
+  --on-primary:#ffffff;
+  --surface:#000000;
+  --surface-variant:#1b1b1b;
+  --on-surface:#f1f1f1;
+  --outline:#555;
+  --shadow:0 6px 18px rgba(0,0,0,.55);
+}
+
+body {
+  margin:0;
+  font-family:'Mona', monospace;
+  background:var(--surface);
+  color:var(--on-surface);
+  padding-bottom:120px;
+  transition: background .35s ease, color .35s ease;
+}
+
+.container {
+  max-width:650px;
+  margin:auto;
+  padding:1.2rem;
+}
+
+#imgModal {
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:10000;
+}
+
+#imgModalPic {
+  max-width:95%;
+  max-height:95%;
+  transition:transform .15s;
+  touch-action:none;
+}
+
+/* Heading */
+.app-heading {
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-top:.5rem;
+}
+.app-heading .material-symbols-outlined {
+  font-size:3.8rem;
+  color:var(--primary);
+}
+.app-heading h2 {
+  margin:0;
+  font-size:2rem;
+  font-weight:700;
+  color:var(--primary);
+}
+
+/* Cards */
+.card {
+  background:var(--surface-variant);
+  padding:1.2rem;
+  margin:1rem 0;
+  border-radius:var(--radius-card);
+  box-shadow:var(--shadow);
+  transition: background .3s ease, box-shadow .3s ease;
+}
+
+/* Preview image */
+.preview-box {
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 0 20px rgba(0,0,0,0.25);
+}
+.preview-box img {
+  width:100%;
+  display:block;
+  transition:filter .25s ease;
+}
+
+/* Labels */
+.card h3 {
+  margin:0 0 .8rem 0;
+  font-size:1.2rem;
+  font-weight:600;
+}
+
+/* Slider */
+input[type=range] {
+  width:100%;
+  appearance:none;
+  height:8px;
+  border-radius:10px;
+  background:var(--outline);
+  cursor:pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  appearance:none;
+  width:26px;height:26px;
+  border-radius:50%;
+  background:var(--primary);
+  box-shadow:0 0 16px rgba(255,51,102,.4);
+  transition:.18s;
+}
+input[type=range]:active::-webkit-slider-thumb {
+  transform:scale(1.15);
+}
+
+.preview-scroll {
+  overflow-x:auto;
+  white-space:nowrap;
+  padding-bottom:10px;
+}
+
+.preview-track {
+  display:flex;
+  gap:12px;
+}
+
+.pImg {
+  width:260px;
+  border-radius:16px;
+  flex-shrink:0;
+  box-shadow:0 0 18px rgba(0,0,0,0.25);
+  transition:filter .25s ease;
+}
+
+/* Buttons */
+.btn {
+  width:100%;
+  padding:.85rem;
+  border:none;
+  border-radius:var(--radius-btn);
+  background:var(--primary);
+  color:var(--on-primary);
+  font-size:1rem;
+  font-weight:600;
+  margin:.45rem 0;
+  cursor:pointer;
+  transition:.25s;
+  position:relative;
+  overflow:hidden;
+}
+.btn:active { transform:scale(.97); opacity:.92; }
+
+/* Ripple */
+.ripple {
+  position:absolute;
+  border-radius:50%;
+  background:rgba(255,255,255,.5);
+  transform:scale(0);
+  animation:ripple .6s linear;
+}
+@keyframes ripple {
+  to { transform:scale(4); opacity:0; }
+}
+
+/* FAB */
+.fab-toggle {
+  position:fixed;
+  bottom:1.3rem;
+  right:1.3rem;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:var(--primary);
+  color:var(--on-primary);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.6rem;
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  transition:.25s;
+  z-index:999;
+}
+.fab-toggle:active { transform:scale(.92) rotate(20deg); }
+
+/* Snackbar */
+#snackbar {
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  transform:translateX(-50%) translateY(20px);
+  background:#323232;
+  color:#fff;
+  padding:.75rem 1.1rem;
+  border-radius:12px;
+  font-size:.95rem;
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .3s, transform .3s;
+  z-index:9999;
+  max-width:90%;
+}
+#snackbar.show {
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}

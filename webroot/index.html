@@ -1,1 +1,68 @@
-<!-- PLACEHOLDER -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Display Color Tweak</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="container">
+
+  <div class="app-heading">
+    <span class="material-symbols-outlined">palette</span>
+    <h2>Display Color Tweak</h2>
+  </div>
+
+  <!-- Preview -->
+  <div class="card">
+    <h3>Live Preview</h3>
+    <div class="preview-scroll">
+      <div class="preview-track">
+        <img class="pImg" src="preview0.jpg">
+        <img class="pImg" src="preview1.jpg">
+        <img class="pImg" src="preview2.jpg">
+        <img class="pImg" src="preview3.jpg">
+        <img class="pImg" src="preview4.jpg">
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Saturation -->
+  <div class="card">
+    <h3>Saturation: <span id="satValue">1.5</span></h3>
+    <input id="satSlider" type="range" min="0" max="3" step="0.01">
+  </div>
+
+  <!-- Contrast -->
+  <div class="card">
+    <h3>Contrast: <span id="conValue">0.7</span></h3>
+    <input id="conSlider" type="range" min="0" max="2" step="0.01">
+  </div>
+
+  <!-- Actions -->
+  <div class="card">
+    <button id="applyBtn" class="btn">Apply Changes</button>
+    <button id="resetBtn" class="btn" style="background:#ff4444">Reset to Defaults</button>
+  </div>
+
+</div>
+
+<div id="imgModal">
+  <img id="imgModalPic">
+</div>
+
+<div class="fab-toggle">
+  <span class="material-symbols-outlined">brightness_6</span>
+</div>
+
+<div id="snackbar"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
